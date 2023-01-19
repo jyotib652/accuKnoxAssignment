@@ -24,7 +24,6 @@ func Test_readLogFileData(t *testing.T) {
 func Test_detectError(t *testing.T) {
 	expected := errors.New("the same diner(id:1) had same food item(id:1) more than once")
 	_, msg := detectError(data)
-
 	if errors.Is(msg, expected) {
 		t.Errorf("expected:%v but got:%v", expected, msg)
 	}
