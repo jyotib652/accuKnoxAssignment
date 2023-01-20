@@ -13,14 +13,6 @@ type Data struct {
 	FoodMenuId int `json:"foodmenu_id"`
 }
 
-// var FoodItems map[int]int
-// var FoodItemsCount map[int]int
-
-// var FoodItems = map[int]int{}
-// var FoodItemsCount = map[int]int{}
-
-// var TopFoodItems = []int{}
-
 var file = "./log.json"
 
 func main() {
@@ -29,7 +21,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("data:", data)
+	// fmt.Println("data:", data)
 
 	dataFromError, msg := detectError(data)
 	fmt.Printf("dataFromError: %v\n", dataFromError)
