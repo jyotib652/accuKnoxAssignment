@@ -13,8 +13,8 @@ type Data struct {
 	FoodMenuId int `json:"foodmenu_id"`
 }
 
-var FoodItems map[int]int
-var FoodItemsCount map[int]int
+// var FoodItems map[int]int
+// var FoodItemsCount map[int]int
 
 // var FoodItems = map[int]int{}
 // var FoodItemsCount = map[int]int{}
@@ -29,18 +29,20 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	FoodItems = map[int]int{}
-	FoodItemsCount = map[int]int{}
+	fmt.Println("data:", data)
+
 	dataFromError, msg := detectError(data)
 	fmt.Printf("dataFromError: %v\n", dataFromError)
 	fmt.Printf("error: %s\n", msg)
 
-	TopItems := determineTopFoodItems(FoodItemsCount)
+	TopItems := determineTopFoodItems(dataFromError)
 	fmt.Println("TopItems:", TopItems)
 }
 
 // detectError detects if the same diner had same food twice
 func detectError(data []Data) (map[int]int, error) {
+	FoodItemsCount := map[int]int{}
+	FoodItems := map[int]int{}
 	for _, val := range data {
 		FoodItemsCount[val.FoodMenuId] += 1
 		_, ok := FoodItems[val.EaterId]
